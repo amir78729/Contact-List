@@ -185,7 +185,7 @@ int go_to_contact_number_x (int x){//used in "changed" function (going to the ne
 }
 
 void add_contact(void) {//add a contact ***not useable in final version***
-			system("cls");
+	system("cls");
 	showOwnerInfo();
 	int boool =1,isDigit=0;//to check if the input is correct or not
 	newc = (struct contact *)malloc(sizeof(struct contact)); //allocate memory for our new structure(CONTACT!!!)
@@ -208,11 +208,18 @@ void add_contact(void) {//add a contact ***not useable in final version***
 	printf("Enter your contact's 1st name : \n");
 		getchar();
 		gets(currentc->firstName);
-		puts("-----------------------------------");
+	system("cls");
+	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");	
 	printf("Enter %s's last name : \n",currentc->firstName);
 	gets(currentc->lastName);
-		puts("-----------------------------------");
-
+	system("cls");
+	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");
 	printf("Enter %s's student-ID : \n",currentc->firstName);
 	while(boool){
         scanf("%s", currentc->id);
@@ -237,8 +244,11 @@ void add_contact(void) {//add a contact ***not useable in final version***
     boool=0;
     }
 	boool=1;
-		puts("-----------------------------------\r");
-		
+	system("cls");
+	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");		
 	printf("How old is %s? \n",currentc->firstName);
 	while(boool){
         scanf("%s", currentc->age);
@@ -264,8 +274,11 @@ void add_contact(void) {//add a contact ***not useable in final version***
     }
 	boool=1;
 		
-		puts("-----------------------------------\r");
-
+	system("cls");
+	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");
 	printf("Enter your contact's gender\n( 0 = male , 1 = female) : \n");
 	while(boool){
 		scanf( " %c",&(currentc->gender));
@@ -281,8 +294,11 @@ void add_contact(void) {//add a contact ***not useable in final version***
 		boool=0;
 	}
 	boool=1;
-		puts("-----------------------------------");
-
+	system("cls");
+	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");
 	printf("Enter %s's field :  \n",currentc->firstName);
 	printf("( 1 =\t Computer Engineering\n");
 	printf("  2 =\t Computer Science\n");
@@ -309,8 +325,11 @@ void add_contact(void) {//add a contact ***not useable in final version***
 		boool=0;
 	}
 	boool=1;
+	system("cls");
+	showOwnerInfo();
 	puts("-----------------------------------");
-
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");
 	printf("Enter %s's phone number : \n",currentc->firstName);
 
         gets(currentc->phoneNumber);
@@ -318,12 +337,17 @@ void add_contact(void) {//add a contact ***not useable in final version***
 
 
 
-		puts("-----------------------------------");
-			
+	system("cls");
+	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
+	puts("-----------------------------------");			
 	printf("Enter %s's address : \n",currentc->firstName);
 	gets(currentc->address);
 	system("cls");
 	showOwnerInfo();
+	puts("-----------------------------------");
+	puts("-------ADD A CONTACT TO LIST-------");
 	puts("-----------------------------------");
 	show (currentc);
 	puts("___________________________________");
@@ -715,6 +739,7 @@ void remove_contact_by_info(void){//the 1st option of "remove" function...
     Sleep(2000);	
 
 }
+
 void remove_contact_by_number(void){//the 2nd option of "remove" function...
 	system("cls");
 	showOwnerInfo();
@@ -1371,10 +1396,10 @@ int main() {
     rHnd = GetStdHandle(STD_INPUT_HANDLE);
     
     SMALL_RECT windowSize = {0, 0, 36, 30};
-//    SetConsoleWindowInfo(wHnd, 1, &windowSize);
+    SetConsoleWindowInfo(wHnd, 1, &windowSize);
     
-//    COORD bufferSize = {10, 10};
-//    SetConsoleScreenBufferSize(wHnd, bufferSize);
+    COORD bufferSize = {10, 10};
+    SetConsoleScreenBufferSize(wHnd, bufferSize);
     
 	system("color F0");
 	char *filename = "D:\\FinalProject-AmirhosseinAlibakhshi.txt";
@@ -1398,7 +1423,7 @@ int main() {
 	find_cnum();
 	correct_contact_number();
 	}
-	SetConsoleTitle("Contact-list (Amirhossein Alibakhshi)");
+	SetConsoleTitle("Contact-list");
 	showOwnerInfo();
 	fflush(stdin);	
 	puts("***** Please enter a command! *****");
@@ -1422,42 +1447,42 @@ int main() {
 		switch (command) {				
 			case 'a'://add
 			case 'A':
-				SetConsoleTitle("Contact-list (Amirhossein Alibakhshi) - add");
+				SetConsoleTitle("Contact-list - add");
 				system("color 2E");//green 
 				add_contact();
 				break;
 				
 			case 'r'://remove
 			case 'R':
-				SetConsoleTitle("Contact-list (Amirhossein Alibakhshi) - remove");
+				SetConsoleTitle("Contact-list - remove");
 				system("color 4E"); //red
 				remove_contact();
 				break;
 				
 			case 'D'://display
 			case 'd':
-				SetConsoleTitle("Contact-list (Amirhossein Alibakhshi) - display");
+				SetConsoleTitle("Contact-list - display");
 				system("color F0");
 				display_all_contacts();
 				break;
 				
 			case 'f'://find
 			case 'F':
-				SetConsoleTitle("Contact-list (Amirhossein Alibakhshi) - find");
+				SetConsoleTitle("Contact-list - find");
 				system("color 1F");//blue
 				find_contact();
 				break;
 				
 			case 'c'://change
 			case 'C':
-				SetConsoleTitle("Contact-list (Amirhossein Alibakhshi) - modify");
+				SetConsoleTitle("Contact-list - modify");
 				system("color E0"); 
 				change_contact();
 				break;
 				
 			case 'S'://save 2 file
 			case 's':
-				SetConsoleTitle("Contact-list (Amirhossein Alibakhshi) - saving...");
+				SetConsoleTitle("Contact-list - saving...");
 				save();				
 				break;
 					
@@ -1475,7 +1500,7 @@ int main() {
 			fflush(stdin);
 			system("cls");
 			system("color F0");
-			SetConsoleTitle("Contact-list (Amirhossein Alibakhshi)");
+			SetConsoleTitle("Contact-list");
 			showOwnerInfo();
 			fflush(stdin);	
 			puts("** Please enter another command! **");
